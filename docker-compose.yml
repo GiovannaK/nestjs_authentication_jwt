@@ -1,6 +1,6 @@
 version: "3"
 services:
-  db:
+  dbauth:
     image: postgres
     container_name: dbauth
     ports:
@@ -20,6 +20,6 @@ services:
     volumes:
       - .:/usr/app
     environment:
-      DB_HOST: db
+      DB_HOST: dbauth
     depends_on:
-      - db
+      - dbauth
