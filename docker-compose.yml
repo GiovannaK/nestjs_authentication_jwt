@@ -1,0 +1,25 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    container_name: dbauth
+    ports:
+      - ${DB_PORT}:5432
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+  web:
+    build: .
+    ports:
+      - ${PORT}:3001
+    command: npm run start:dev
+    volumes:
+      - .:/usr/app
+    environment:
+      DB_HOST: db
+    depends_on:
+      - db

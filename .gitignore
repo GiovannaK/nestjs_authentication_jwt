@@ -11,6 +11,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# environment variables
+.env
+
+pgdata
+
 # OS
 .DS_Store
 
