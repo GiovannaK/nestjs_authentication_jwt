@@ -1,6 +1,6 @@
 version: "3"
 services:
-  db:
+  dbauth:
     image: postgres
     container_name: dbauth
     ports:
@@ -13,13 +13,15 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
   web:
-    build: .
+    build:
+      dockerfile: Dockerfile
+      context: .
     ports:
       - ${PORT}:3001
     command: npm run start:dev
     volumes:
       - .:/usr/app
     environment:
-      DB_HOST: db
+      DB_HOST: dbauth
     depends_on:
-      - db
+      - dbauth
