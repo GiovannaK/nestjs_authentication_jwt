@@ -29,7 +29,12 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    return this.userRepository.save(user);
+    const savedUser = await this.userRepository.save(user);
+    return {
+      id: savedUser.id,
+      email: savedUser.email,
+      name: savedUser.name,
+    };
   }
 
   async checkIfUserExists(user: CreateUserDto) {
