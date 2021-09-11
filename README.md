@@ -32,6 +32,19 @@
 $ npm install
 ```
 
+### Inside auth module add a new file called constants.ts
+```
+export const jwtConstants = {
+  secret:'Choose a secret for jwt token',
+  expires:'Choose an expiration date',
+};
+
+```
+
+```bash
+$ docker-compose up
+```
+
 ## Running the app
 
 ```bash
